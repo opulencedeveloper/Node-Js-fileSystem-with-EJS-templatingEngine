@@ -25,9 +25,6 @@
                 <textarea name="description" id="description" rows="5"><% if (editing) { %><%= product.description %><% } %></textarea>
             </div>
             <% if (editing) { %>
-                <!-- this input tag acts as a body when this form is submitted,
-                it will be read like this 'req.body.productId', we made it hidden because we only,
-                want to use it as a body -->
                 <input type="hidden" value="<%= product.id %>" name="productId">
             <% } %>
 

@@ -1,16 +1,11 @@
 const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
-  //in app.js since we have already set a path to the folder(view) where the templating engine files is stored.
-  //we just complete the pathname to the templating engine here in the first argument below,
-  //the second argument is the data we are passing to this view
   res.render("admin/edit-product", {
     pageTitle: "Add Product",
     path: "/admin/add-product",
     editing: false,
   });
-  //don't call next after you've sent a response becus this will cause an error
-  //as sending a response means closing the process
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -24,9 +19,6 @@ exports.getEditProduct = (req, res, next) => {
     if (!productData) {
       return res.redirect("/");
     }
-    //in app.js since we have already set a path to the folder(view) where the templating engine files is stored.
-    //we just complete the pathname to the templating engine here in the first argument below,
-    //the second argument is the data we are passing to this view
     res.render("admin/edit-product", {
       pageTitle: "Edit Product",
       path: "/admin/edit-product",
@@ -34,9 +26,6 @@ exports.getEditProduct = (req, res, next) => {
       product: productData,
     });
   });
-
-  //don't call next after you've sent a response becus this will cause an error
-  //as sending a response means closing the process
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -69,12 +58,7 @@ exports.postAddProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  //the fn passed to fetchAll is a callback, since we access the file system
-  //which is async, we need a callback fn that runs when the file is done
   Product.fetchAll((products) => {
-    //in app.js since we have already set a path to the folder(view) where the templating engine files is stored
-    // we just complete the pathname to the templating engine here in the first argument below,
-    //the second argument is the data we are passing to this view
     res.render("admin/products", {
       prods: products,
       pageTitle: "Admin Products",
@@ -86,5 +70,5 @@ exports.getProducts = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   Product.deleteById(prodId);
-  res.redirect('/admin/products');
+  res.redirect("/admin/products");
 };

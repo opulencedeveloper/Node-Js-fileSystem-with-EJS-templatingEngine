@@ -8,10 +8,6 @@ router.get("/", shopController.getIndex);
 
 router.get("/products", shopController.getProducts);
 
-//if you have a static route like 'products/delete'.
-//the order matters since this can be seen as a dynamic route in the dynamic route below.
-//so define static route first before its dynamic route
-
 router.get("/products/:productId", shopController.getProduct);
 
 router.get("/cart", shopController.getCart);

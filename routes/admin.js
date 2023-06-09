@@ -13,10 +13,6 @@ router.get("/products", adminController.getProducts);
 
 router.post("/add-product", adminController.postAddProduct);
 
-//if you have a static route like 'products/delete'.
-//the order matters since this can be seen as a dynamic route in the dynamic route below.
-//so define static route first before its dynamic route
-
 router.get("/edit-product/:productId", adminController.getEditProduct);
 
 router.post("/edit-product", adminController.postEditProduct);
